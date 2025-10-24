@@ -135,7 +135,7 @@ function salvarDados() {
             nome: rankingFMTM[id].nome,
             pontuacao: rankingFMTM[id].pontuacao,
             historico: rankingFMTM[id].historico,
-            clube: rankingFMTM[id].clube || 'N/A' 
+            
         };
         // Remove a pontuação temporária do torneio atual (pontosTorneioAtual) antes de salvar permanentemente
         delete rankingFMTM[id].pontosTorneioAtual; 
@@ -197,10 +197,9 @@ function inicializarRanking() {
                 rankingFMTM[atleta.id] = {
                     id: atleta.id,
                     nome: atleta.nome,
-                    clube: atleta.clube,
-                    pontuacao: PONTUACAO_INICIAL_FMTM,
-                    historico: [],
-                    pontosTorneioAtual: 0 // Adiciona o campo temporário para o ranking
+                    
+                   
+                    
                 };
             }
             // Atualiza o rating do atleta na lista se o ranking for mais recente
