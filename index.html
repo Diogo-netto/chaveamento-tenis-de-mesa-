@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style.css">
+    <title>Sistema de Torneios de Tênis de Mesa (CBTM/FMTM)</title>
+</head>
+<body>
+
+    <div id="loginPage">
+        <h2>Acesso ao Sistema</h2>
+        <form id="loginForm">
+            <p>
+                <label for="username">Usuário:</label>
+                <input type="text" id="username"  required>
+            </p>
+            <p>
+                <label for="password">Senha:</label>
+                <input type="password" id="password"  required>
+            </p>
+            <button type="submit">Entrar</button>
+            <p id="loginError" style="color: red;"></p>
+        </form>
+    </div>
+
+    <div id="mainApp" class="container hidden">
+        <header>
+            <h1>Gestão de Torneio - Tênis de Mesa</h1>
+            <nav>
+                <a href="#" onclick="doLogout()">Sair</a> |
+                <a href="ranking.html" target="_blank">Acessar Ranking</a> |
+                <button onclick="downloadJSON()">Salvar Dados</button> |
+                <button onclick="gerarPDFGruposLimpo(document.getElementById('categoria').value)">Baixar PDF - Fase de Grupos</button> |
+                <button onclick="gerarPDFEliminatorias(document.getElementById('categoria').value)">Baixar PDF - Fase Eliminatória</button> |
+
+    <button onclick="resetSystem()" style="background-color: #dc3545; border-color: #dc3545;">Zerar Sistema</button> |
+            </nav>
+        </header>
+
+        <div class="tab-buttons">
+            <button class="tab-button active" onclick="openTab('cadastro')">1. Cadastro e Status</button>
+            <button class="tab-button" id="btnGrupos" onclick="openTab('grupos')" disabled>2. Fase de Grupos</button>
+            <button class="tab-button" id="btnEliminatorias" onclick="openTab('eliminatorias')" disabled>3. Chave Eliminatória</button>
+        </div>
+
+        <div id="cadastro" class="tab-content active">
+            <h3>Cadastro de Atletas</h3>
+            <form id="cadastroForm">
+                <input type="text" id="nomeAtleta" placeholder="Nome do Atleta" required>
+                <select id="categoria">
+                    <option value="Absoluto Masculino">Adulto Masculino</option>
+                    <option value="Absoluto Feminino">Adulto Feminino</option>
+                    </select>
+                <button type="submit">Cadastrar</button>
+            </form>
+            <p id="statusTorneio">Status: Cadastre pelo menos 4 atletas.</p>
+            <p>Total de Atletas na Categoria: <span id="contadorAbsoluto">0</span></p>
+            <button id="iniciarTorneioBtn" disabled>Iniciar Torneio (Gerar Grupos)</button>
+            
+            <hr>
+            <h3>Lista de Atletas Cadastrados (Ordenado por Rating)</h3>
+            <div id="listaAtletas"></div>
+        </div>
+
+        <div id="grupos" class="tab-content">
+            <h3>Fase de Grupos - Absoluto Masculino</h3>
+            <p>Selecione um grupo, insira os resultados (Ex: 3x0, 3x1, etc.) e clique em 'Calcular Classificação'.</p>
+            
+            
+            
+            <div id="faseDeGrupos" class="grupos-grid">
+                <p>Nenhum grupo gerado. Cadastre atletas e clique em 'Iniciar Torneio'.</p>
+            </div>
+        </div>
+
+        <div id="eliminatorias" class="tab-content">
+            <h3>Chave Eliminatória (Nocaute Simples)</h3>
+            <div id="chaveamentoContainer">
+                <p>Chaveamento será gerado após o fim da Fase de Grupos.</p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="podiumModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>🏆 Pódio do Torneio 🏆</h2>
+            <div id="podiumResult">
+                <p style="font-size: 1.5em; color: #D4AF37;"><strong>🥇 Campeão:</strong> <span id="campeaoNome"></span></p>
+                <p style="font-size: 1.3em; color: #C0C0C0;"><strong>🥈 Vice-Campeão:</strong> <span id="viceNome"></span></p>
+                <p style="font-size: 1.1em; color: #CD7F32;"><strong>🥉 3º Lugar:</strong> <span id="terceiroNome1"></span></p>
+                <p style="font-size: 1.1em; color: #CD7F32;"><strong>🥉 3º Lugar:</strong> <span id="terceiroNome2"></span></p>
+            </div>
+        </div>
+    </div>
+    <div id="printContainer" style="display: none; padding: 20px;">
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

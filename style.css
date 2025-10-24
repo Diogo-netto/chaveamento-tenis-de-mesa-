@@ -1,0 +1,578 @@
+/* ==========================================================
+   ESTILOS GERAIS E LAYOUT
+   ========================================================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9ecef; /* Fundo cinza claro */
+    color: #343a40; /* Texto escuro padrão */
+}
+
+/* Container principal para centralizar o conteúdo */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+header {
+    background-color: #007bff; /* Azul primário (Bootstrap Blue) */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    margin: -20px -20px 20px -20px; /* Expande para as bordas do container */
+}
+
+header h1 {
+    margin-top: 0;
+    font-size: 1.8em;
+}
+
+header nav {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+header nav a, header nav button {
+    color: white;
+    text-decoration: none;
+    margin: 0 5px;
+    padding: 5px 10px;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+header nav a:hover, header nav button:hover {
+    background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+    border-color: white;
+}
+
+/* Botões de Navegação de Abas */
+.tab-buttons {
+    display: flex;
+    border-bottom: 2px solid #ced4da;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 12px 25px;
+    cursor: pointer;
+    border: none;
+    background-color: #f8f9fa; /* Fundo cinza claro */
+    margin-right: 5px;
+    transition: all 0.3s;
+    font-weight: bold;
+    border-radius: 6px 6px 0 0;
+    border: 1px solid #ced4da;
+    border-bottom: none;
+    color: #495057;
+}
+
+.tab-button:disabled {
+    cursor: not-allowed;
+    background-color: #f1f1f1;
+    color: #adb5bd;
+}
+
+.tab-button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    border-bottom: 2px solid #ffffff; /* Linha branca para destacar */
+    position: relative;
+    z-index: 1;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px 0;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Estilos de Formulário (Cadastro) */
+#cadastroForm {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    align-items: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+#cadastroForm input[type="text"], #cadastroForm select {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    flex-grow: 1;
+}
+
+/* Botões de Ação Principal */
+button, input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #28a745; /* Verde para ação principal */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #1e7e34;
+}
+
+button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+#iniciarTorneioBtn {
+    background-color: #ffc107; /* Amarelo de alerta/início */
+    color: #343a40;
+    margin-top: 15px;
+}
+
+#iniciarTorneioBtn:hover:not(:disabled) {
+    background-color: #e0a800;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+    margin: 20px 0;
+}
+
+/* Lista de Atletas */
+#listaAtletas h4 {
+    border-left: 5px solid #007bff;
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+#listaAtletas p {
+    margin: 5px 0;
+    border-bottom: 1px dotted #dee2e6;
+    padding: 5px 0;
+    transition: background-color 0.2s;
+}
+
+#listaAtletas p:hover {
+    background-color: #f8f9fa;
+}
+
+
+/* ==========================================================
+   FASE DE GRUPOS
+   ========================================================== */
+
+.grupos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.grupo-card {
+    border: 1px solid #adb5bd;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.grupo-card h4 {
+    color: #dc3545; /* Vermelho para destaque de grupo */
+    border-bottom: 2px solid #dc3545;
+    padding-bottom: 5px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.grupo-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.grupo-card th, .grupo-card td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.grupo-card thead th {
+    background-color: #e9ecef;
+    font-weight: bold;
+    color: #495057;
+}
+
+.match {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    background-color: #f1f8ff; /* Fundo leve para o jogo */
+    padding: 8px;
+    border-radius: 6px;
+    border-left: 3px solid #007bff;
+}
+
+.j-name {
+    flex-grow: 1;
+    padding: 0 5px;
+    font-weight: 600;
+}
+
+.match input[type="text"] {
+    width: 120px;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+}
+
+.calcular-btn {
+    margin-top: 15px;
+    width: 100%;
+    background-color: #17a2b8; /* Azul claro para o cálculo */
+}
+
+.calcular-btn:hover:not(:disabled) {
+    background-color: #138496;
+}
+
+.classificacao {
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #28a745;
+    background-color: #e2f4e9; /* Fundo verde claro para resultado */
+    border-radius: 6px;
+}
+
+/* ==========================================================
+   CHAVEAMENTO ELIMINATÓRIO (BRACKET)
+   ========================================================== */
+
+#chaveamentoContainer {
+    display: flex;
+    overflow-x: auto;
+    padding: 20px 0;
+    background-color: #f8f9fa; /* Fundo para a área do bracket */
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+
+.fase-coluna {
+    flex-shrink: 0;
+    width: 280px; /* Largura um pouco maior para melhor leitura */
+    margin-right: 40px;
+    text-align: center;
+}
+
+.fase-coluna h4 {
+    color: #6c757d;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.match-box {
+    border: 2px solid #6f42c1; /* Roxo para as partidas */
+    border-radius: 8px;
+    margin-bottom: 30px; /* Mais espaço entre as partidas */
+    padding: 10px;
+    background-color: #f3f0ff; /* Fundo roxo claro */
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.player-score {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    font-size: 0.95em;
+}
+
+.player-score:nth-child(2) { /* Primeiro jogador (com linha divisória) */
+    border-bottom: 1px solid #6f42c1;
+}
+
+.score-input {
+    width: 45px;
+    text-align: center;
+    padding: 4px;
+    border: 1px solid #adb5bd;
+    border-radius: 3px;
+    font-weight: bold;
+    background-color: white;
+}
+
+.player-name {
+    font-weight: bold;
+    color: #343a40;
+}
+
+/* Status especial de partidas */
+.bye {
+    background-color: #ffe0e0; /* Vermelho claro para BYE */
+    color: #dc3545;
+    font-style: italic;
+    border-radius: 4px;
+}
+
+.vencedor {
+    border-color: #28a745; /* Borda verde para partida finalizada */
+    background-color: #e9f5e9;
+}
+
+.campeao-display {
+    padding: 25px;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    color: #ffc107; /* Ouro/Amarelo para Campeão */
+    margin-top: 30px;
+    border: 5px double #ffc107;
+    background-color: #343a40;
+    border-radius: 10px;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.match-details {
+    font-size: 0.75em;
+    color: #6c757d;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 3px;
+    text-align: left;
+}
+
+
+/* ==========================================================
+   TELA DE LOGIN
+   ========================================================== */
+
+#loginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #f4f7f9; /* Fundo suave para login */
+}
+
+#loginForm {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    width: 350px;
+    text-align: center;
+}
+
+#loginForm h2 {
+    color: #007bff;
+    margin-bottom: 25px;
+    font-size: 1.5em;
+}
+
+#loginForm p {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+#loginForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #495057;
+}
+
+#loginForm input[type="text"], #loginForm input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+#loginForm button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #ff7b00;
+    font-size: 1.1em;
+}
+
+#loginForm button:hover {
+    background-color: #0056b3;
+}
+
+#loginError {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   ESTILOS DO MODAL DE PÓDIO
+   ========================================================== */
+
+.modal-overlay {
+    display: none; /* Inicia escondido */
+    position: fixed; /* Fica fixo na tela */
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro semi-transparente */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-align: center;
+    position: relative;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal-close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+#podiumResult p {
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Seu CSS Existente... */
+
+/* ------------------------------------------- */
+/* CSS específico para Impressão (PDF/Impressora) */
+/* ------------------------------------------- */
+@media print {
+    /* Garante que o conteúdo dos grupos seja o único visível ao imprimir */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Torna visível o container principal e o conteúdo dos grupos */
+    #grupos, #faseDeGrupos, 
+    #grupos *, #faseDeGrupos * {
+        visibility: visible;
+        display: block !important; /* Assegura que nada escondido por JS/CSS apareça */
+        position: static !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Garante que cada grupo comece em uma nova página (ideal para súmulas) */
+    .grupo { /* Use a classe ou ID que você usa para cada grupo individualmente */
+        page-break-after: always;
+        border: 1px solid #000; /* Borda para demarcar cada súmula */
+        padding: 10px;
+        margin: 5px 0;
+    }
+    
+    /* Se a fonte estiver muito grande, reduza */
+    #faseDeGrupos {
+        font-size: 10pt;
+    }
+    
+    /* Para a fase eliminatória, se for usada a mesma função, remova a quebra */
+    #eliminatorias .chaveamento-diagrama {
+        page-break-after: auto;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
